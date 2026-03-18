@@ -1,0 +1,49 @@
+<section
+  id="nosotros"
+  class="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 scroll-mt-24"
+>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+    <div class="lg:col-span-5">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gray-400 text-sm font-semibold text-[#2D2D2D]"
+      >
+        <span class="w-2.5 h-2.5 rounded-full bg-[#009250]"></span>
+        Nosotros
+      </div>
+      <h2 class="text-4xl sm:text-5xl font-bold text-[#2D2D2D] mt-6 leading-tight">
+        Qué es <br />
+        <span class="text-[#009250]">Facilities Bolívar</span>
+      </h2>
+    </div>
+    <div class="lg:col-span-7 lg:pt-14">
+      <p class="text-xl sm:text-2xl text-[#333333] leading-relaxed font-medium">
+        Somos una empresa de Facility Management (FM) que gestiona la infraestructura de las
+        empresas para una operación eficiente, segura y sostenible permitiendo que las
+        organizaciones se enfoquen en su continuidad.
+      </p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+    @for (feature of features; track feature.title) {
+      <div
+        class="flex flex-col rounded-[2rem] overflow-hidden border border-gray-200/60 shadow-sm bg-gradient-to-b from-[#efefef] to-gray-200/80 h-full"
+      >
+        <div class="relative h-56 w-full shrink-0">
+          <img
+            [src]="feature.image"
+            [alt]="feature.title"
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#efefef] via-transparent to-transparent"></div>
+        </div>
+        <div class="px-6 pb-8 pt-2 flex-1 flex flex-col">
+          <h3 class="text-xl font-bold text-[#000000] mb-3 leading-snug">{{ feature.title }}</h3>
+          <p class="text-[#2D2D2D] text-[15px] leading-relaxed font-light">
+            {{ feature.description }}
+          </p>
+        </div>
+      </div>
+    }
+  </div>
+</section>

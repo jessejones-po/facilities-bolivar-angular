@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Facilities Bolívar - Redirigiendo</title>
+  <script type="text/javascript">
+    (function() {
+      sessionStorage.redirect = location.href;
+      var base = location.pathname.split('/')[1] || '';
+      location.replace(location.origin + '/' + (base ? base + '/' : ''));
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirigiendo...</p>
+</body>
+</html>

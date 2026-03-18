@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Book: Facilities Bolívar */
+  --color-brand-green: #009250;
+  --color-brand-yellow: #ffdf58;
+  --color-brand-light: #efefef;
+  --font-bolivar: "Bolivar", "Montserrat", sans-serif;
+}
+
+body {
+  font-family: var(--font-bolivar);
+  background-color: var(--color-brand-light);
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}

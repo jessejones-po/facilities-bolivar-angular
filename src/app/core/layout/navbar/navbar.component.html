@@ -1,0 +1,87 @@
+<nav class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/70 border-b border-gray-200/50 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20 lg:h-24">
+      <!-- Logo -->
+      <button
+        type="button"
+        (click)="scrollToSection('nosotros', $event)"
+        class="flex-shrink-0 flex items-center justify-center cursor-pointer bg-white/80 p-2 rounded-lg"
+      >
+        <img
+          src="https://www.facilitiesbolivar.com/assets/img/brand/1_FACILITIES_BOL%C3%8DVAR_LOGO.png"
+          alt="Facilities Bolívar"
+          class="h-12 sm:h-16 w-auto object-contain"
+          referrerpolicy="no-referrer"
+        />
+      </button>
+
+      <!-- Bloque de Menú (enlaces estándar) -->
+      <div class="hidden lg:flex lg:items-center gap-x-10 mr-20">
+        @for (item of navItems; track item.moduleId) {
+          <button
+            type="button"
+            (click)="scrollToSection(item.moduleId, $event)"
+            class="text-[#009250] font-bold text-sm xl:text-base hover:opacity-75 transition-opacity"
+          >
+            {{ item.label }}
+          </button>
+        }
+      </div>
+
+      <!-- CTA (renderizado separado del menú) -->
+      <div class="hidden lg:flex items-center flex-shrink-0">
+        <a
+          [routerLink]="ctaNav.routerLink"
+          (click)="closeMobileMenu()"
+          class="flex items-center justify-center text-center bg-[#ffdf58] text-[#009250] font-bold text-sm xl:text-base px-10 py-3 rounded-full hover:brightness-95 transition-all shadow-sm"
+        >
+          {{ ctaNav.label }}
+        </a>
+      </div>
+
+      <div class="flex items-center lg:hidden">
+        <button
+          type="button"
+          (click)="toggleMobileMenu()"
+          class="text-[#009250] hover:opacity-75 focus:outline-none p-2"
+          aria-label="Menú"
+        >
+          @if (isMobileMenuOpen()) {
+            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          } @else {
+            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          }
+        </button>
+      </div>
+    </div>
+  </div>
+
+  @if (isMobileMenuOpen()) {
+    <div
+      class="lg:hidden absolute top-full left-0 w-full backdrop-blur-md bg-white/90 border-t border-gray-200/50 shadow-xl py-4 px-4 flex flex-col gap-2"
+    >
+      @for (item of navItems; track item.moduleId) {
+        <button
+          type="button"
+          (click)="scrollToSection(item.moduleId, $event)"
+          class="text-left text-[#009250] font-bold text-base block py-3 px-4 rounded-lg hover:bg-[#efefef]/80 transition-colors"
+        >
+          {{ item.label }}
+        </button>
+      }
+      <div class="pt-4 pb-2">
+        <a
+          [routerLink]="ctaNav.routerLink"
+          (click)="closeMobileMenu()"
+          class="flex items-center justify-center w-full bg-[#ffdf58] text-[#009250] font-bold text-base px-10 py-3 rounded-full hover:brightness-95 transition-all shadow-sm"
+        >
+          {{ ctaNav.label }}
+        </a>
+      </div>
+    </div>
+  }
+</nav>
