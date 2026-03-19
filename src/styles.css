@@ -3,6 +3,8 @@
 @theme {
   /* Brand Book: Facilities Bolívar */
   --color-brand-green: #009250;
+  --color-brand-green-accent: #4ade80;
+  --color-brand-dark: #1a1a1a;
   --color-brand-yellow: #ffdf58;
   --color-brand-light: #efefef;
   --font-bolivar: "Bolivar", "Montserrat", sans-serif;

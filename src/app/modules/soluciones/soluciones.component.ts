@@ -19,25 +19,14 @@ interface DisplayedContent {
   selector: 'app-soluciones',
   standalone: true,
   templateUrl: './soluciones.component.html',
-  styles: [
-    `
-      .soluciones-tab-inactive {
-        opacity: 0.7;
-      }
-      .soluciones-tab-inactive:hover {
-        opacity: 1;
-        transform: scale(1.02);
-      }
-    `,
-  ],
   animations: [
     trigger('fadeInOut', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('300ms ease-in-out', style({ opacity: 1 })),
+        animate('400ms ease-out', style({ opacity: 1 })),
       ]),
       transition(':leave', [
-        animate('300ms ease-in-out', style({ opacity: 0 })),
+        animate('250ms ease-in', style({ opacity: 0 })),
       ]),
     ]),
   ],
