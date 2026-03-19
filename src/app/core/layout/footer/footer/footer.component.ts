@@ -5,9 +5,9 @@ import { LEGAL_LINKS, SOCIAL_LINKS, COPYRIGHT } from '../footer.constants';
   selector: 'app-footer',
   standalone: true,
   template: `
-    <footer class="w-full bg-[#009250] px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-      <div class="max-w-[1440px] mx-auto flex flex-col items-center gap-8 text-center">
-        <nav class="flex flex-wrap justify-center gap-x-6 sm:gap-x-8 gap-y-4">
+    <footer class="w-full bg-[#009250] px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mx-auto flex max-w-[1440px] flex-col items-center gap-10 text-center">
+        <nav class="flex flex-wrap justify-center gap-x-6 gap-y-4 sm:gap-x-8" aria-label="Enlaces legales">
           @for (link of legalLinks; track link.href) {
             <a
               [href]="link.href"
@@ -18,7 +18,7 @@ import { LEGAL_LINKS, SOCIAL_LINKS, COPYRIGHT } from '../footer.constants';
           }
         </nav>
 
-        <div class="flex items-center justify-center gap-6">
+        <div class="flex w-full max-w-md items-center justify-center gap-8" aria-label="Redes sociales">
           @for (social of socialLinks; track social.icon) {
             <a
               [href]="social.href"

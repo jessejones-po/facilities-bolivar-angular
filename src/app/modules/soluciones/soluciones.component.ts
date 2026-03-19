@@ -6,6 +6,7 @@ import {
   animate,
 } from '@angular/animations';
 import { SOLUTION_ITEMS, SOLUTION_CONTENT_MAP } from './data';
+import type { SolutionItem } from './types';
 
 interface DisplayedContent {
   _trackId: string;
@@ -13,12 +14,18 @@ interface DisplayedContent {
   description: string;
   image: string;
   badge?: string;
+  icon: SolutionItem['icon'];
 }
 
 @Component({
   selector: 'app-soluciones',
   standalone: true,
   templateUrl: './soluciones.component.html',
+  styles: `
+    .solution-tab-idle:hover {
+      background-color: rgb(250 250 249);
+    }
+  `,
   animations: [
     trigger('fadeInOut', [
       transition(':enter', [
@@ -39,7 +46,11 @@ export class SolucionesComponent {
   protected readonly displayedItems = computed<DisplayedContent[]>(() => {
     const id = this.activeSolutionId();
     const content = this.contentMap[id] ?? this.contentMap['infraestructura'];
-    return content ? [{ ...content, _trackId: id }] : [];
+    const tabMeta =
+      this.solutionItems.find((s) => s.id === id) ?? this.solutionItems[0];
+    return content && tabMeta
+      ? [{ ...content, _trackId: id, icon: tabMeta.icon }]
+      : [];
   });
 
   protected setActiveSolution(id: string): void {

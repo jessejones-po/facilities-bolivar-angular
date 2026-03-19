@@ -1,49 +1,71 @@
-<nav class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/70 border-b border-gray-200/50 shadow-sm">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-20 lg:h-24">
-      <!-- Logo -->
+<nav class="sticky top-0 z-50 w-full bg-white/80 shadow-sm backdrop-blur-md">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Desktop: logo | nav centrado (min-w-0) | CTA -->
+    <div
+      class="hidden h-20 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 lg:grid lg:h-24 lg:gap-4 xl:gap-6"
+    >
       <button
         type="button"
         (click)="scrollToSection('nosotros', $event)"
-        class="flex-shrink-0 flex items-center justify-center cursor-pointer bg-white/80 p-2 rounded-lg"
+        class="flex shrink-0 cursor-pointer items-center justify-center justify-self-start rounded-lg bg-white/80 p-2"
       >
         <img
           src="https://www.facilitiesbolivar.com/assets/img/brand/1_FACILITIES_BOL%C3%8DVAR_LOGO.png"
           alt="Facilities Bolívar"
-          class="h-12 sm:h-16 w-auto object-contain"
+          class="h-12 w-auto object-contain sm:h-16"
           referrerpolicy="no-referrer"
         />
       </button>
 
-      <!-- Bloque de Menú (enlaces estándar) -->
-      <div class="hidden lg:flex lg:items-center gap-x-10 mr-20">
-        @for (item of navItems; track item.moduleId) {
-          <button
-            type="button"
-            (click)="scrollToSection(item.moduleId, $event)"
-            class="text-[#009250] font-bold text-sm xl:text-base hover:opacity-75 transition-opacity"
-          >
-            {{ item.label }}
-          </button>
-        }
+      <div
+        class="flex min-w-0 justify-center overflow-x-auto [-webkit-overflow-scrolling:touch] [scrollbar-width:thin]"
+      >
+        <div
+          class="mx-auto flex max-w-full flex-nowrap items-center justify-center gap-x-3 lg:gap-x-4 xl:gap-x-6 px-0.5"
+        >
+          @for (item of navItems; track item.moduleId) {
+            <button
+              type="button"
+              (click)="scrollToSection(item.moduleId, $event)"
+              class="shrink-0 text-xs font-bold text-[#009250] transition-opacity hover:opacity-75 lg:text-sm xl:text-base"
+            >
+              {{ item.label }}
+            </button>
+          }
+        </div>
       </div>
 
-      <!-- CTA (renderizado separado del menú) -->
-      <div class="hidden lg:flex items-center flex-shrink-0">
+      <div class="flex shrink-0 items-center justify-self-end">
         <a
           [routerLink]="ctaNav.routerLink"
           (click)="closeMobileMenu()"
-          class="flex items-center justify-center text-center bg-[#ffdf58] text-[#009250] font-bold text-sm xl:text-base px-10 py-3 rounded-full hover:brightness-95 transition-all shadow-sm"
+          class="inline-flex min-h-11 shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-[#FFD700] px-4 py-2.5 text-center text-xs font-bold text-green-900 shadow-sm transition-all hover:brightness-95 xl:px-6 xl:py-3 xl:text-sm 2xl:px-10 2xl:text-base"
         >
           {{ ctaNav.label }}
         </a>
       </div>
+    </div>
 
-      <div class="flex items-center lg:hidden">
+    <!-- Móvil -->
+    <div class="flex h-20 items-center justify-between lg:hidden">
+      <button
+        type="button"
+        (click)="scrollToSection('nosotros', $event)"
+        class="flex min-w-0 cursor-pointer items-center justify-center rounded-lg bg-white/80 p-1.5 sm:p-2"
+      >
+        <img
+          src="https://www.facilitiesbolivar.com/assets/img/brand/1_FACILITIES_BOL%C3%8DVAR_LOGO.png"
+          alt="Facilities Bolívar"
+          class="h-11 w-auto max-w-[min(100%,200px)] object-contain sm:h-12"
+          referrerpolicy="no-referrer"
+        />
+      </button>
+
+      <div class="flex shrink-0 items-center">
         <button
           type="button"
           (click)="toggleMobileMenu()"
-          class="text-[#009250] hover:opacity-75 focus:outline-none p-2"
+          class="p-2 text-[#009250] hover:opacity-75 focus:outline-none"
           aria-label="Menú"
         >
           @if (isMobileMenuOpen()) {
@@ -62,22 +84,22 @@
 
   @if (isMobileMenuOpen()) {
     <div
-      class="lg:hidden absolute top-full left-0 w-full backdrop-blur-md bg-white/90 border-t border-gray-200/50 shadow-xl py-4 px-4 flex flex-col gap-2"
+      class="absolute left-0 top-full flex w-full flex-col gap-2 border-t border-gray-200/50 bg-white/90 px-4 py-4 shadow-xl backdrop-blur-md lg:hidden"
     >
       @for (item of navItems; track item.moduleId) {
         <button
           type="button"
           (click)="scrollToSection(item.moduleId, $event)"
-          class="text-left text-[#009250] font-bold text-base block py-3 px-4 rounded-lg hover:bg-[#efefef]/80 transition-colors"
+          class="block rounded-lg px-4 py-3 text-left text-base font-bold text-[#009250] transition-colors hover:bg-[#efefef]/80"
         >
           {{ item.label }}
         </button>
       }
-      <div class="pt-4 pb-2">
+      <div class="px-1 pb-2 pt-4">
         <a
           [routerLink]="ctaNav.routerLink"
           (click)="closeMobileMenu()"
-          class="flex items-center justify-center w-full bg-[#ffdf58] text-[#009250] font-bold text-base px-10 py-3 rounded-full hover:brightness-95 transition-all shadow-sm"
+          class="mx-auto flex min-h-11 w-full max-w-md items-center justify-center rounded-full bg-[#FFD700] px-4 py-3 text-center text-sm font-bold leading-snug text-green-900 shadow-sm transition-all hover:brightness-95 sm:min-h-[44px] sm:px-6 sm:text-base"
         >
           {{ ctaNav.label }}
         </a>

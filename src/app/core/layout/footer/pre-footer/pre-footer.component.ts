@@ -9,7 +9,7 @@ import { PRE_FOOTER } from '../footer.constants';
   template: `
     <section
       id="solicitar-diagnostico"
-      class="w-full bg-[#2D2D2D] px-4 sm:px-6 lg:px-8 pt-16 lg:pt-20 pb-12 lg:pb-16 scroll-mt-24"
+      class="w-full scroll-mt-24 bg-[#1a1a1a] px-4 py-16 sm:px-6 lg:px-8"
     >
       <div
         class="max-w-[1440px] mx-auto flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-12 text-center lg:text-left"
@@ -25,7 +25,7 @@ import { PRE_FOOTER } from '../footer.constants';
         <div class="shrink-0">
           <a
             routerLink="/solicitar-diagnostico"
-            class="inline-flex items-center justify-center bg-[#ffdf58] text-[#009250] font-bold text-sm xl:text-base px-10 py-3 rounded-full hover:brightness-95 transition-all shadow-sm"
+            class="inline-flex items-center justify-center rounded-full bg-[#FFD700] px-10 py-3 text-sm font-bold text-green-900 shadow-sm transition-all hover:brightness-95 xl:text-base"
           >
             {{ preFooter.ctaLabel }}
           </a>

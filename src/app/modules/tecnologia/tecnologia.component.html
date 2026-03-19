@@ -1,4 +1,4 @@
-<section id="tecnologia" class="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-8 lg:pt-10 pb-16 lg:pb-20 scroll-mt-24 bg-[#efefef]">
+<section id="tecnologia" class="mx-auto w-full max-w-[1440px] scroll-mt-24 bg-[#efefef] px-4 py-16 sm:px-6 lg:px-8">
   <div class="overflow-hidden bg-white shadow-lg border border-gray-200/60 rounded-[2rem] lg:rounded-l-[2rem] lg:rounded-tr-none lg:rounded-br-none">
     <div class="grid grid-cols-1 lg:grid-cols-2">
       <!-- Columna imagen (esquinas redondeadas solo a la izquierda en desktop) -->
@@ -58,12 +58,13 @@
                 }
               </div>
               <span
-                class="text-base leading-relaxed pt-1.5"
-                [class.text-[#009250]]="feature.highlighted"
-                [class.font-medium]="feature.highlighted"
-                [class.border-b-2]="feature.highlighted"
+                class="block text-base leading-relaxed pt-1.5"
                 [class.border-[#009250]]="feature.highlighted"
-                [class.pb-0.5]="feature.highlighted"
+                [class.border-b-2]="feature.highlighted"
+                [class.border-t-2]="feature.highlighted"
+                [class.font-medium]="feature.highlighted"
+                [class.py-2]="feature.highlighted"
+                [class.text-[#009250]]="feature.highlighted"
                 [class.text-[#2D2D2D]]="!feature.highlighted"
               >
                 {{ feature.label }}

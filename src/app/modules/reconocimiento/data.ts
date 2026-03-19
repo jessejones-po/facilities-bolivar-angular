@@ -1,4 +1,5 @@
 export interface Certificacion {
+  /** Vacío cuando el logo se compone en plantilla (p. ej. RUC®). */
   src: string;
   alt: string;
   label?: string;
@@ -46,7 +47,7 @@ export const TESTIMONIOS: Testimonio[] = [
       'Facilities Bolívar es un aliado clave para la continuidad de nuestro negocio. Su cercanía, conocimiento y capacidad analítica nos permiten garantizar que la infraestructura funcione de manera óptima para nuestros equipos y clientes, incluso ante contingencias.',
     author: 'Mireya Moreno',
     role: 'VP de Servicios Administrativos',
-    companyLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Davivienda_logo.svg/200px-Davivienda_logo.svg.png',
+    companyLogo: 'assets/Davivienda.png',
     companyName: 'Davivienda',
   },
   {
@@ -54,7 +55,7 @@ export const TESTIMONIOS: Testimonio[] = [
       'La experticia de Facilities Bolívar en gestión de infraestructura nos ha permitido enfocarnos en nuestro core business. Su compromiso con la calidad y el cumplimiento normativo es ejemplar.',
     author: 'Carlos Rodríguez',
     role: 'Director de Operaciones',
-    companyLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Compensar_logo.svg/200px-Compensar_logo.svg.png',
+    companyLogo: 'assets/Compensar.jpg',
     companyName: 'Compensar',
   },
   {
@@ -62,7 +63,7 @@ export const TESTIMONIOS: Testimonio[] = [
       'Trabajar con Facilities Bolívar ha transformado nuestra forma de gestionar los espacios. Su enfoque en sostenibilidad y eficiencia operativa alinea perfectamente con nuestros valores corporativos.',
     author: 'Ana Martínez',
     role: 'Gerente de Facility Management',
-    companyLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Davivienda_logo.svg/200px-Davivienda_logo.svg.png',
-    companyName: 'Empresa Líder',
+    companyLogo: 'assets/Externado.png',
+    companyName: 'Universidad Externado de Colombia',
   },
 ];

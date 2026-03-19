@@ -11,7 +11,7 @@ import { getFaqItems, getInitialOpenFaqId, getBlogPosts } from './data';
   template: `
     <section
       id="blog"
-      class="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 scroll-mt-24 bg-[#ffffff]"
+      class="mx-auto w-full max-w-[1440px] scroll-mt-24 bg-white px-4 py-16 sm:px-6 lg:px-8"
     >
       <div class="mb-8">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 mb-4">

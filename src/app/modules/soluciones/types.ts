@@ -1,7 +1,14 @@
+export type SolutionTabIcon =
+  | 'lightning'
+  | 'location'
+  | 'document'
+  | 'paper-plane'
+  | 'gear';
+
 export interface SolutionItem {
   id: string;
   label: string;
-  icon: string;
+  icon: SolutionTabIcon;
 }
 
 export interface SolutionContent {

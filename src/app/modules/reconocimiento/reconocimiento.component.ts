@@ -4,13 +4,8 @@ import { CERTIFICACIONES, TESTIMONIOS } from './data';
 @Component({
   selector: 'app-reconocimiento',
   standalone: true,
-  styles: `
-    .testimonial-blur {
-      filter: blur(1px);
-    }
-  `,
   template: `
-    <section id="reconocimiento" class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-[72px] py-16 lg:py-[64px] scroll-mt-24 bg-white">
+    <section id="reconocimiento" class="mx-auto w-full max-w-7xl scroll-mt-24 bg-white px-4 py-16 sm:px-6 lg:px-8">
       <!-- Sección Superior: Certificaciones (layout Figma) -->
       <div class="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-[40px]">
         <div class="flex flex-col gap-4">
@@ -26,17 +21,17 @@ import { CERTIFICACIONES, TESTIMONIOS } from './data';
           </p>
         </div>
 
-        <div class="flex flex-row flex-wrap items-center justify-center lg:justify-start gap-6 shrink-0">
+        <div class="flex shrink-0 flex-row flex-wrap items-end justify-center gap-6 lg:justify-start">
           @for (cert of certificaciones; track cert.alt) {
             @if (cert.src) {
               <img
                 [src]="cert.src"
                 [alt]="cert.alt"
-                class="shrink-0 object-contain"
-                [class.w-[99.91px]]="cert.variant === 'icontec'"
+                class="shrink-0 bg-transparent object-contain"
                 [class.h-[134px]]="cert.variant === 'icontec'"
-                [class.w-[137.45px]]="cert.variant === 'ccs' || cert.variant === 'ruc'"
-                [class.h-[66.6px]]="cert.variant === 'ccs' || cert.variant === 'ruc'"
+                [class.w-[99px]]="cert.variant === 'icontec'"
+                [class.h-[66px]]="cert.variant === 'ccs' || cert.variant === 'ruc'"
+                [class.w-[137px]]="cert.variant === 'ccs' || cert.variant === 'ruc'"
                 loading="lazy"
               />
             }
@@ -44,9 +39,9 @@ import { CERTIFICACIONES, TESTIMONIOS } from './data';
               <span class="text-[#009250] font-bold text-xl italic shrink-0">CCS</span>
             }
             @if (cert.variant === 'ruc' && !cert.src) {
-              <div class="flex items-center gap-2 shrink-0">
-                <div class="w-5 h-5 rounded-full bg-[#ffdf58]"></div>
-                <span class="text-[#2D2D2D] font-bold text-lg">RUC®</span>
+              <div class="flex h-[66px] w-[137px] shrink-0 items-center justify-center gap-2">
+                <div class="h-5 w-5 shrink-0 rounded-full bg-[#ffdf58]"></div>
+                <span class="text-lg font-bold text-[#2D2D2D]">RUC®</span>
               </div>
             }
           }
@@ -54,7 +49,7 @@ import { CERTIFICACIONES, TESTIMONIOS } from './data';
       </div>
 
       <!-- Sección Inferior: Testimonios (layout Figma) -->
-      <div class="pt-20 flex flex-col gap-10">
+      <div class="flex flex-col gap-10 pt-16 lg:pt-20">
         <div class="flex flex-col gap-4">
           <h2 class="text-[36px] font-bold text-[#282828] leading-[1.4]">
             Respaldamos a los líderes del mercado
@@ -75,14 +70,13 @@ import { CERTIFICACIONES, TESTIMONIOS } from './data';
                 >
                   @for (testimonio of testimoniosDisplay(); track trackByTestimonio($index, testimonio)) {
                     <div
-                      class="flex-shrink-0 rounded-2xl bg-white border border-[#E1E1E1] p-8 transition-all duration-500 ease-out"
+                      class="flex-shrink-0 rounded-2xl border border-[#E1E1E1] bg-white p-8 transition-all duration-500 ease-out"
                       [class.w-[320px]]="!isCenterCard($index)"
                       [class.w-[360px]]="isCenterCard($index)"
                       [class.scale-105]="isCenterCard($index)"
                       [class.scale-95]="!isCenterCard($index)"
                       [class.opacity-100]="isCenterCard($index)"
-                      [class.opacity-60]="!isCenterCard($index)"
-                      [class.testimonial-blur]="!isCenterCard($index)"
+                      [class.opacity-40]="!isCenterCard($index)"
                       [class.z-20]="isCenterCard($index)"
                       [class.z-10]="!isCenterCard($index)"
                       [class.shadow-2xl]="isCenterCard($index)"
@@ -96,27 +90,25 @@ import { CERTIFICACIONES, TESTIMONIOS } from './data';
                       >
                         {{ testimonio.quote }}
                       </p>
-                      <div class="flex items-center gap-2 mt-6 pt-6 border-t border-[#E1E1E1]">
+                      <div class="flex min-w-0 items-start gap-3 mt-6 pt-6 border-t border-[#E1E1E1]">
                         <img
                           [src]="testimonio.companyLogo"
                           [alt]="testimonio.companyName"
-                          class="h-9 w-auto object-contain shrink-0"
+                          class="h-9 max-w-[100px] shrink-0 object-contain object-left"
                           loading="lazy"
                         />
-                        <div class="flex flex-col gap-0.5">
+                        <div class="min-w-0 flex-1 flex flex-col gap-0.5 overflow-hidden">
                           <p
-                            class="font-bold leading-[1.4] transition-colors duration-500"
+                            class="break-words font-bold leading-[1.4] text-[#1B1B1B] transition-colors duration-500"
                             [class.text-[18px]]="isCenterCard($index)"
                             [class.text-[14px]]="!isCenterCard($index)"
-                            [class.text-[#1B1B1B]]="true"
                           >
                             {{ testimonio.author }}
                           </p>
                           <p
-                            class="font-normal leading-[1.4] transition-colors duration-500"
+                            class="break-words font-normal leading-[1.4] text-[#1B1B1B] transition-colors duration-500"
                             [class.text-[18px]]="isCenterCard($index)"
                             [class.text-[14px]]="!isCenterCard($index)"
-                            [class.text-[#1B1B1B]]="true"
                           >
                             {{ testimonio.role }}
                           </p>
@@ -141,10 +133,10 @@ import { CERTIFICACIONES, TESTIMONIOS } from './data';
               <button
                 type="button"
                 (click)="next()"
-                class="w-12 h-12 rounded-full bg-[#ffdf58] flex items-center justify-center text-[#282828] hover:brightness-95 transition-colors"
+                class="flex h-12 w-12 items-center justify-center rounded-full bg-[#FFD700] text-green-900 transition-colors hover:brightness-95"
                 aria-label="Siguiente"
               >
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
@@ -162,16 +154,16 @@ import { CERTIFICACIONES, TESTIMONIOS } from './data';
                   <p class="text-[#1B1B1B] text-[16px] leading-[1.4] font-normal -mt-6">
                     {{ testimonio.quote }}
                   </p>
-                  <div class="flex items-center gap-2 mt-6 pt-6 border-t border-[#E1E1E1]">
+                  <div class="flex min-w-0 items-start gap-3 mt-6 pt-6 border-t border-[#E1E1E1]">
                     <img
                       [src]="testimonio.companyLogo"
                       [alt]="testimonio.companyName"
-                      class="h-9 w-auto object-contain shrink-0"
+                      class="h-9 max-w-[100px] shrink-0 object-contain object-left"
                       loading="lazy"
                     />
-                    <div class="flex flex-col gap-0.5">
-                      <p class="font-bold text-[18px] text-[#1B1B1B] leading-[1.4]">{{ testimonio.author }}</p>
-                      <p class="font-normal text-[18px] text-[#1B1B1B] leading-[1.4]">{{ testimonio.role }}</p>
+                    <div class="min-w-0 flex-1 flex flex-col gap-0.5 overflow-hidden">
+                      <p class="break-words font-bold text-[18px] leading-[1.4] text-[#1B1B1B]">{{ testimonio.author }}</p>
+                      <p class="break-words font-normal text-[18px] leading-[1.4] text-[#1B1B1B]">{{ testimonio.role }}</p>
                     </div>
                   </div>
                 </div>
@@ -191,10 +183,10 @@ import { CERTIFICACIONES, TESTIMONIOS } from './data';
               <button
                 type="button"
                 (click)="next()"
-                class="w-12 h-12 rounded-full bg-[#ffdf58] flex items-center justify-center text-[#282828] hover:brightness-95 transition-colors"
+                class="flex h-12 w-12 items-center justify-center rounded-full bg-[#FFD700] text-green-900 transition-colors hover:brightness-95"
                 aria-label="Siguiente"
               >
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
