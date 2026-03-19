@@ -15,3 +15,17 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Soluciones: zoom suave continuo en imagen */
+@keyframes slowZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.soluciones-slow-zoom {
+  animation: slowZoom 15s linear infinite;
+}
